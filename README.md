@@ -4,5 +4,39 @@
 
 ![Captura de pantalla de la página](web-screen.png)
 
-
 </div>
+
+## Descripción del proyecto
+
+Este proyecto tiene como objetivo crear una API de episodios subidos a Youtube🔴 de Los Simuladores con fines educativos.
+
+La API proporciona acceso a capítulos, temporadas y elenco de la serie.
+
+
+## API
+>**Nota:** (Las solicitudes y respuestas están en formato **JSON**)
+
+Los endpoints disponibles son:
+
+### GET 
+>/chapters
+- GET `/chapters`: Devuelve los capítulos de la serie
+- GET `/chapters?page=2`: Devuelve la página 2 de los capítulos de la serie (si no está definido, se devuelve de la primer página) (5 capítulos por página)
+- GET `/chapters/:ID`: Devuelve un capítulo
+- GET `/chapters?season=:ID_SEASON`: Devuelve los capítulos de la temporada establecida (por ID_SEASON)
+>/seasons
+- GET `/seasons`: Devuelve los datos de las temporadas
+- GET `/seasons/:ID`: Devuelve los datos de una temporada
+- GET `/seasons`: Devuelve los datos de las temporadas
+>/cast
+- GET `/cast`: Devuelve los datos del elenco de la serie
+- GET `/cast/:ID`: Devuelve los datos del actor/actriz
+### POST
+- POST `/chapter`: Agrega un nuevo capítulo a la serie. <br>
+<sub>{ <br>
+  **url**: www.youtube.com/watch?v=EXAMPLE, <br>
+  **title**: "Nombre del capítulo", <br>
+  **description**: "Descripción del capítulo", <br>
+  **season**: "ID_SEASON", <br>
+  **cast**: "1,2,3,...,N" (son los ID de cada actor/actriz), <br>
+}</sub>
