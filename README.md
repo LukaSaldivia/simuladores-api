@@ -8,7 +8,7 @@
 
 ## Descripción del proyecto
 
-Este proyecto tiene como objetivo crear una API de episodios subidos a Youtube🔴 de Los Simuladores con fines educativos.
+Este proyecto tiene como objetivo crear una API de los episodios subidos a Youtube🔴 de Los Simuladores con fines educativos.
 
 La API proporciona acceso a capítulos, temporadas y elenco de la serie.
 
