@@ -30,6 +30,7 @@ Los endpoints disponibles son:
 - GET `/seasons`: Devuelve los datos de las temporadas
 - GET `/seasons/:ID`: Devuelve los datos de una temporada
 - GET `/seasons?sort=:PROPIEDAD&order=ASC|DESC`: Devuelve las temporadas ordenadas según la propiedad establecida en `sort` y en orden ascendente o descendente según `order`
+
 >/cast
 - GET `/cast`: Devuelve los datos del elenco de la serie
 - GET `/cast/:ID`: Devuelve los datos del actor/actriz
