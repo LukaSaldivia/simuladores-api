@@ -27,7 +27,6 @@ Los endpoints disponibles son:
 >/seasons
 - GET `/seasons`: Devuelve los datos de las temporadas
 - GET `/seasons/:ID`: Devuelve los datos de una temporada
-- GET `/seasons`: Devuelve los datos de las temporadas
 >/cast
 - GET `/cast`: Devuelve los datos del elenco de la serie
 - GET `/cast/:ID`: Devuelve los datos del actor/actriz
