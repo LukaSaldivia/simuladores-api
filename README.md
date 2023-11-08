@@ -25,7 +25,7 @@ Los endpoints disponibles son:
 - GET `/chapters?sort=:PROPIEDAD&order=ASC|DESC`: Devuelve los capítulos ordenados según la propiedad establecida en `sort` y en orden ascendente o descendente según `order`
 - GET `/chapters/:ID`: Devuelve un capítulo
 - GET `/chapters?season=:ID_SEASON`: Devuelve los capítulos de la temporada establecida (por ID_SEASON)
-- 
+
 >/seasons
 - GET `/seasons`: Devuelve los datos de las temporadas
 - GET `/seasons/:ID`: Devuelve los datos de una temporada
