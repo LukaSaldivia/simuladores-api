@@ -19,7 +19,19 @@ class SeasonAPIController extends ApiController{
       $sort = isset($_GET['sort']) ? $_GET['sort'] : null;
       $order = isset($_GET['order']) ? $_GET['order'] : 'ASC';
 
-      $seasons = $this->model->getSeasons($page,$sort,$order);
+      $orderQuery = '';
+      $acceptedOrders = ['ASC','DESC'];
+
+      if (isset($sort)) {
+        if ($this->model->seasonHasColumn($sort) && in_array(strtoupper($order),$acceptedOrders)) {
+          $orderQuery = 'ORDER BY '.$sort.' '.$order;
+        }else{
+          $this->view->response(['response' => 'Bad Request'],400);
+          return;
+        }
+      }
+
+      $seasons = $this->model->getSeasons($page,$orderQuery);
       if (isset($seasons)) {
         $this->view->response($seasons,200);
       }else{

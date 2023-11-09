@@ -5,28 +5,7 @@ require_once './app/models/model.php';
 class CastModel extends Model{
 
 
-  function getCast($page = 1, $sort = null, $order = 'ASC'){
-
-
-    $orderQuery = '';
-    
-
-    if (isset($sort)) {
-      $orderQuery = 'ORDER BY '.$sort.' '.$order;
-    }
-
-
-    if (strlen($orderQuery) > 0) {
-      $query = $this->db->prepare("DESCRIBE cast");
-      $query->execute();
-      $columnas = $query->fetchAll(PDO::FETCH_COLUMN);
-
-      if (!in_array($sort,$columnas) || (strtoupper($order) != 'ASC' && strtoupper($order) != 'DESC')) {
-        return null;
-      }
-    }
-
-
+  function getCast($page = 1, $orderQuery = ''){
 
     $query = $this->db->prepare('SELECT * FROM cast '.$orderQuery.' LIMIT 5 OFFSET '.(($page-1)*5));
     $query->execute();
@@ -57,6 +36,14 @@ class CastModel extends Model{
     $query->execute([$id]);
     
     return $query->fetch(PDO::FETCH_OBJ);
+  }
+
+  function castHasColumn($column){
+    $query = $this->db->prepare("DESCRIBE cast");
+    $query->execute();
+    $columnas = $query->fetchAll(PDO::FETCH_COLUMN);
+
+    return in_array($column,$columnas);
   }
   
 }

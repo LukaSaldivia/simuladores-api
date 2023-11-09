@@ -27,12 +27,16 @@ class ChapterAPIController extends APIController{
       $orderQuery = '';
       $acceptedOrders = ['ASC','DESC'];
 
-      if (isset($sort) && $this->model->chapterHasColumn($sort) && in_array(strtoupper($order),$acceptedOrders)) {
-        $orderQuery = 'ORDER BY '.$sort.' '.$order;
-      }else{
-        $this->view->response(['response' => 'Bad Request'],400);
-        return;
+      if (isset($sort)) {
+        if ($this->model->chapterHasColumn($sort) && in_array(strtoupper($order),$acceptedOrders)) {
+          $orderQuery = 'ORDER BY '.$sort.' '.$order;
+        }else{
+          $this->view->response(['response' => 'Bad Request'],400);
+          return;
+        }
       }
+
+
 
       $chapters = $this->model->getChapters($page,$seasonQuery,$orderQuery);
       

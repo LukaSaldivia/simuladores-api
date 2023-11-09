@@ -3,24 +3,9 @@
 require_once './app/models/model.php';
 
 class SeasonModel extends Model{
-    function getSeasons($page = 1, $sort = null, $order = 'ASC'){
-
-      $orderQuery = '';
-
-      if (isset($sort)) {
-        $orderQuery = 'ORDER BY '.$sort.' '.$order;
-      }
+    function getSeasons($page = 1, $orderQuery = ''){
 
 
-      if (strlen($orderQuery) > 0) {
-        $query = $this->db->prepare("DESCRIBE temporadas");
-        $query->execute();
-        $columnas = $query->fetchAll(PDO::FETCH_COLUMN);
-
-        if (!in_array($sort,$columnas) || (strtoupper($order) != 'ASC' && strtoupper($order) != 'DESC')) {
-          return null;
-        }
-      }
 
         $query = $this->db->prepare('SELECT * FROM temporadas '.$orderQuery.' LIMIT 5 OFFSET '.(($page-1)*5));
         $query->execute();
@@ -53,6 +38,14 @@ class SeasonModel extends Model{
       $query->execute([$id]);
       
       return $query->fetch(PDO::FETCH_OBJ);
+  }
+
+  function seasonHasColumn($column){
+    $query = $this->db->prepare("DESCRIBE temporadas");
+    $query->execute();
+    $columnas = $query->fetchAll(PDO::FETCH_COLUMN);
+
+    return in_array($column,$columnas);
   }
   
 }

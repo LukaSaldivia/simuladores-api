@@ -19,7 +19,19 @@ class CastAPIController extends ApiController{
       $sort = isset($_GET['sort']) ? $_GET['sort'] : null;
       $order = isset($_GET['order']) ? $_GET['order'] : 'ASC';
 
-      $cast = $this->model->getCast($page,$sort,$order);
+      $orderQuery = '';
+      $acceptedOrders = ['ASC','DESC'];
+
+      if (isset($sort)) {
+        if ($this->model->castHasColumn($sort) && in_array(strtoupper($order),$acceptedOrders)) {
+          $orderQuery = 'ORDER BY '.$sort.' '.$order;
+        }else{
+          $this->view->response(['response' => 'Bad Request'],400);
+          return;
+        }
+      }
+
+      $cast = $this->model->getCast($page,$orderQuery);
       if (isset($cast)) {
         $this->view->response($cast,200);
       }else{
