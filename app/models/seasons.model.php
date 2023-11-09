@@ -27,25 +27,30 @@ class SeasonModel extends Model{
       }
     
     function editSeason($id, $nombre){
+      try {
         $query = $this->db->prepare('UPDATE temporadas SET nombretemp = ? WHERE idtemp = ?');
         $query->execute([$nombre,$id]);
+        return true;
+      } catch (PDOException $e) {
+        return null;
+      }
     }
 
 
   
-    public function getSeason($id){
+    function getSeason($id){
       $query = $this->db->prepare('SELECT * FROM temporadas WHERE idtemp = ?');
       $query->execute([$id]);
       
       return $query->fetch(PDO::FETCH_OBJ);
   }
 
-  function seasonHasColumn($column){
-    $query = $this->db->prepare("DESCRIBE temporadas");
-    $query->execute();
-    $columnas = $query->fetchAll(PDO::FETCH_COLUMN);
+    function seasonHasColumn($column){
+      $query = $this->db->prepare("DESCRIBE temporadas");
+      $query->execute();
+      $columnas = $query->fetchAll(PDO::FETCH_COLUMN);
 
-    return in_array($column,$columnas);
-  }
+      return in_array($column,$columnas);
+    }
   
 }

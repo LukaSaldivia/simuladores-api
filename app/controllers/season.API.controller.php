@@ -47,4 +47,39 @@ class SeasonAPIController extends ApiController{
       }
     }
 }
+  function add(){
+    $body = $this->getData();
+    $nombretemp = $body->nombretemp;
+    $id = $this->model->addSeason($nombretemp);
+    if ($id) {
+      $this->view->response(['response' => 'Season added with id '.$id],200);
+    }else{
+      $this->view->response(['response' => 'Error on adding'],404);
+    }
+  }
+  function delete($params = []){
+    $season = $this->model->getSeason($params[':ID']);
+    if ($season) {
+      $this->model->deleteSeason($params[':ID']);
+      $this->view->response(['response' => 'Season deleted'],200);
+    }else{
+      $this->view->response(['response' => 'Not Found'],404);
+    }
+  }
+  function update($params = []){
+    $idseason = $params[':ID'];
+    $season = $this->model->getSeasons($idseason);
+
+    if ($season) {
+      $body = $this->getData();
+      $nombretemp = $body->nombretemp;
+
+      $boolean = $this->model->editSeason($idseason, $nombretemp);
+      if ($boolean) {
+        $this->view->response(['response' => 'Season '.$idseason.' updated'],200);
+      }else{
+        $this->view->response(['response' => 'Error on updating'],404);
+      }
+    }
+  }
 }

@@ -2,6 +2,7 @@
 
 require_once 'config.php';
 
+
 abstract class Model {
         protected $db;
 

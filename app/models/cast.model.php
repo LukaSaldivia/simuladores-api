@@ -16,14 +16,25 @@ class CastModel extends Model{
   }
 
   function addCast($nombre, $apellido){
-    $query = $this->db->prepare('INSERT INTO cast (nombrecast, apellido) VALUES ( ? , ? )');
-    $query->execute([$nombre,$apellido]);
+    try {
+      $query = $this->db->prepare('INSERT INTO cast (nombrecast, apellido) VALUES ( ? , ? )');
+      $query->execute([$nombre,$apellido]);
+      return $this->db->lastInsertId();
+    } catch (PDOException $e) {
+      return null;
+    }
 
   }
 
   function editCast($id, $nombre, $apellido){
-    $query = $this->db->prepare('UPDATE cast SET nombrecast = ?, apellido = ? WHERE idcast = ?');
-    $query->execute([$nombre,$apellido,$id]);
+    try {
+      $query = $this->db->prepare('UPDATE cast SET nombrecast = ?, apellido = ? WHERE idcast = ?');
+      $query->execute([$nombre,$apellido,$id]);
+      return true;
+    } catch (PDOException $e) {
+      return false;
+    }
+    
   }
 
   function deleteCast($id){
