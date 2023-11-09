@@ -18,7 +18,6 @@
 API RESTful desarrollada con fin educativo para la carrera TUDAI
  </pre>
  ![Lenguaje: PHP](https://img.shields.io/badge/Lenguaje-PHP-8A2BE2)
- ![Serie](https://img.shields.io/badge/Serie-Los%20Simuladores-008511)
  ![Promoción](https://img.shields.io/badge/Promoción-pendiente-ffaa00)
 </div>
 
