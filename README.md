@@ -6,14 +6,14 @@
 
 </div>
 
-## Descripción del proyecto
+## 👷‍♂️👷‍♂️ Descripción del proyecto
 
 Este proyecto tiene como objetivo crear una API de los episodios subidos a Youtube🔴 de Los Simuladores con fines educativos.
 
 La API proporciona acceso a capítulos, temporadas y elenco de la serie.
 
 
-## API
+## 📮 API
 >**Nota:** (Las solicitudes y respuestas están en formato **JSON**)
 
 Los endpoints disponibles son:
