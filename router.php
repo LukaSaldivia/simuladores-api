@@ -9,6 +9,9 @@ $router = new Router();
 
 $router->addRoute('chapters','GET','ChapterAPIController','get');
 $router->addRoute('chapters/:ID','GET','ChapterAPIController','get');
+$router->addRoute('chapters/:ID','DELETE','ChapterAPIController','delete');
+$router->addRoute('chapters','POST','ChapterAPIController','add');
+$router->addRoute('chapters/:ID','PUT','ChapterAPIController','update');
 
 $router->addRoute('seasons/','GET','SeasonAPIController','get');
 $router->addRoute('seasons/:ID','GET','SeasonAPIController','get');

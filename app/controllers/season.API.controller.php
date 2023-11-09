@@ -1,21 +1,21 @@
 <?php
 
-require './app/models/seasons.model.php';
+require_once './app/models/seasons.model.php';
 require_once './app/views/API.view.php';
+require_once './app/controllers/API.controller.php';
 
-class SeasonAPIController{
-  private $view;
-  private $model;
+
+class SeasonAPIController extends ApiController{
+  protected $model;
   
   function __construct(){
-
+    parent::__construct();
     $this->model = new SeasonModel();
-    $this->view = new APIView();
   }
 
   function get($params = []) {
     if(empty($params)){
-      $page = isset($_GET['page']) ? abs($_GET['page']) : 1;
+      $page = isset($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1;
       $sort = isset($_GET['sort']) ? $_GET['sort'] : null;
       $order = isset($_GET['order']) ? $_GET['order'] : 'ASC';
 

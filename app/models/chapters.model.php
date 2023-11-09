@@ -67,8 +67,11 @@ class ChaptersModel extends Model{
     $query->execute([$id]);
   }
 
-  function editChapter($id, $titulo, $descripcion, $temporada, $cast){
+  function updateChapter($id, $titulo, $descripcion, $temporada, $cast){
 
+  try{    
+
+    
     $query = $this->db->prepare('UPDATE capitulos SET nombrecap = ?, descripcion = ? , temporada = ? WHERE idcap = ?');
     $query->execute([$titulo, $descripcion, $temporada, $id]);
 
@@ -81,22 +84,12 @@ class ChaptersModel extends Model{
 
     }
 
-
+    return true;
+  }catch(PDOException $e){
+    return null;
+}
   }
   
-  function getChapterData($id) {
-    $cast = $this->getCastFromChapter($id);
-    $query = $this->db->prepare('SELECT * FROM capitulos LEFT JOIN temporadas ON temporada = idtemp WHERE idcap = ?');
-    $query->execute([$id]);
-
-    $cap = $query->fetchAll(PDO::FETCH_OBJ);
-
-    return array(
-      'cap' => $cap,
-      'cast' => $cast,
-    );
-
-  }
 
   function getChapter($id) {
     
