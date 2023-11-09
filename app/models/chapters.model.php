@@ -5,27 +5,8 @@ require_once './app/models/model.php';
 class ChaptersModel extends Model{
 
 
-  function getChapters($page = 1, $season = null, $sort = null, $order = 'ASC'){
-    $seasonQuery = '';
-    $orderQuery = '';
+  function getChapters($page = 1, $seasonQuery = '', $orderQuery = ''){
 
-    if (isset($sort)) {
-      $orderQuery = 'ORDER BY '.$sort.' '.$order;
-    }
-
-    if (isset($season)) {
-      $seasonQuery = 'WHERE temporada = '.$season;
-    }
-
-    if (strlen($orderQuery) > 0) {
-      $query = $this->db->prepare("DESCRIBE capitulos");
-      $query->execute();
-      $columnas = $query->fetchAll(PDO::FETCH_COLUMN);
-
-      if (!in_array($sort,$columnas) || (strtoupper($order) != 'ASC' && strtoupper($order) != 'DESC')) {
-        return null;
-      }
-      }
     
       $query = $this->db->prepare('SELECT * FROM capitulos '.$seasonQuery.' '.$orderQuery.' LIMIT 5 OFFSET '.(($page-1)*5));
       $query->execute();
@@ -71,7 +52,7 @@ class ChaptersModel extends Model{
 
   try{    
 
-    
+
     $query = $this->db->prepare('UPDATE capitulos SET nombrecap = ?, descripcion = ? , temporada = ? WHERE idcap = ?');
     $query->execute([$titulo, $descripcion, $temporada, $id]);
 
@@ -120,6 +101,14 @@ class ChaptersModel extends Model{
     return $cast;
 
 
+  }
+
+  function chapterHasColumn($column){
+    $query = $this->db->prepare("DESCRIBE capitulos");
+    $query->execute();
+    $columnas = $query->fetchAll(PDO::FETCH_COLUMN);
+
+    return in_array($column,$columnas);
   }
 
 }

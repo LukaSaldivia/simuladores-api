@@ -16,10 +16,25 @@ class ChapterAPIController extends APIController{
     if(empty($params)){
       $page = isset($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1;
       $season = isset($_GET['season']) ? $_GET['season'] : null;
+      $seasonQuery = '';
+
+      if (isset($season)) {
+        $seasonQuery = 'WHERE temporada = '.$season;
+      }
+
       $sort = isset($_GET['sort']) ? $_GET['sort'] : null;
       $order = isset($_GET['order']) ? $_GET['order'] : 'ASC';
+      $orderQuery = '';
+      $acceptedOrders = ['ASC','DESC'];
 
-      $chapters = $this->model->getChapters($page,$season,$sort,$order);
+      if (isset($sort) && $this->model->chapterHasColumn($sort) && in_array(strtoupper($order),$acceptedOrders)) {
+        $orderQuery = 'ORDER BY '.$sort.' '.$order;
+      }else{
+        $this->view->response(['response' => 'Bad Request'],400);
+        return;
+      }
+
+      $chapters = $this->model->getChapters($page,$seasonQuery,$orderQuery);
       
       if (isset($chapters)) {
         $this->view->response($chapters,200);
