@@ -33,6 +33,8 @@ Este proyecto tiene como objetivo crear una API de los episodios subidos a Youtu
 
 La API proporciona acceso a capítulos, temporadas y elenco de la serie.
 
+Desarrollado con el patrón de diseño MVC.
+
 ***
 
 
