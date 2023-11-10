@@ -21,11 +21,6 @@ API RESTful desarrollada con fin educativo para la carrera TUDAI
  ![Promoción](https://img.shields.io/badge/Promoción-pendiente-ffaa00)
 </div>
 
-
-
-
-
-
 ***
 
 ## 👷‍♂️👷‍♂️ Descripción del proyecto
