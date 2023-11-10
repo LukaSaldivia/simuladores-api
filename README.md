@@ -49,7 +49,7 @@ Los endpoints disponibles son:
 - GET `/chapters/:ID`: Devuelve un capítulo establecido por `:ID`
 - GET `/chapters?page=2`: Devuelve la página 2 (establecido por `page`) de los capítulos de la serie (5 capítulos por página)
 - GET `/chapters?sort=:PROPIEDAD&order=ASC|DESC`: Devuelve los capítulos ordenados según la propiedad establecida en `sort` y en orden ascendente o descendente según `order`
-- GET `/chapters?season=:ID_SEASON`: Devuelve los capítulos de la temporada (establecida por `ID_SEASON`)
+- GET `/chapters?season=:ID_SEASON`: Devuelve los capítulos de la temporada (establecida por `ID_SEASON`) (Si `season` es 0, devuelve todos los capítulos)
 - DELETE `/chapters/:ID`: Elimina el capítulo según el `:ID` proporcionado
 - POST `/chapters`: Agrega un nuevo capítulo. <br>
 ```json
