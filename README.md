@@ -46,9 +46,9 @@ Los endpoints disponibles son:
 
 ### /chapters
 - GET `/chapters`: Devuelve los capítulos de la serie
+- GET `/chapters/:ID`: Devuelve un capítulo establecido por `:ID`
 - GET `/chapters?page=2`: Devuelve la página 2 (establecido por `page`) de los capítulos de la serie (5 capítulos por página)
 - GET `/chapters?sort=:PROPIEDAD&order=ASC|DESC`: Devuelve los capítulos ordenados según la propiedad establecida en `sort` y en orden ascendente o descendente según `order`
-- GET `/chapters/:ID`: Devuelve un capítulo establecido por `:ID`
 - GET `/chapters?season=:ID_SEASON`: Devuelve los capítulos de la temporada (establecida por `ID_SEASON`)
 - DELETE `/chapters/:ID`: Elimina el capítulo según el `:ID` proporcionado
 - POST `/chapters`: Agrega un nuevo capítulo. <br>
@@ -75,19 +75,38 @@ Los endpoints disponibles son:
 ### /seasons
 - GET `/seasons`: Devuelve los datos de las temporadas
 - GET `/seasons/:ID`: Devuelve los datos de una temporada
+- GET `/seasons?page=2`: Devuelve la página 2 (establecido por `page`) de las temporada de la serie (5 temporadas por página)
 - GET `/seasons?sort=:PROPIEDAD&order=ASC|DESC`: Devuelve las temporadas ordenadas según la propiedad establecida en `sort` y en orden ascendente o descendente según `order`
-- POST `/season`: Agrega una nueva temporada. <br>
-<sub>{ <br>
-  **nombretemp**: "Nombre de la temporada" <br>
-}</sub>
+- POST `/season`: Agrega una nueva temporada.
+```
+{
+  "nombretemp": "Nombre de la temporada"
+}
+```
+- PUT `seasons/:ID`: Actualiza una temporada según la `:ID`
+```
+{
+  "nombretemp": "Nombre de la temporada"
+}
+```
 
 
 ### /cast
 - GET `/cast`: Devuelve los datos del elenco de la serie
 - GET `/cast/:ID`: Devuelve los datos del actor/actriz
+- GET `/cast?page=2`: Devuelve la página 2 (establecido por `page`) de los intérpretes de la serie (5 por página)
 - GET `/cast?sort=:PROPIEDAD&order=ASC|DESC`: Devuelve al cast ordenado según la propiedad establecida en `sort` y en orden ascendente o descendente según `order`
-- POST `/cast`: Agrega un nuevo/a actor/actriz al elenco. <br>
-<sub>{ <br>
-  **nombrecast**: "Nombre del actor/actriz", <br>
-  **apellido**: "Apellido del actor/actriz" <br>
-}</sub>
+- POST `/cast`: Agrega un nuevo/a actor/actriz al elenco.
+```
+{
+  "nombrecast": "Nombre del actor/actriz",
+  "apellido": "Apellido del actor/actriz"
+}
+```
+- PUT `cast/:ID`: Actualiza un intérprete según la `:ID`
+```
+{
+  "nombrecast": "Nombre del actor/actriz",
+  "apellido": "Apellido del actor/actriz"
+}
+```
