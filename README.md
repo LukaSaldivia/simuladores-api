@@ -63,7 +63,7 @@ Los endpoints disponibles son:
   "nombrecap": "Nombre del capítulo",
   "descripcion": "Descripción del capítulo",
   "temporada": "ID_SEASON",
-  "cast": "1,2,3,...,N" (son los ID de cada actor/actriz),
+  "cast": "1,2,3,...,N" // (son los ID de cada actor/actriz)
 }
 ```
 
@@ -73,7 +73,7 @@ Los endpoints disponibles son:
   "nombrecap": "Nombre del capítulo",
   "descripcion": "Descripción del capítulo",
   "temporada": "ID_SEASON",
-  "cast": "1,2,3,...,N" (son los ID de cada actor/actriz),
+  "cast": "1,2,3,...,N" // (son los ID de cada actor/actriz)
 }
 ```
 
