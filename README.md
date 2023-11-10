@@ -17,8 +17,12 @@
 
 API RESTful desarrollada con fin educativo para la carrera TUDAI
  </pre>
- ![Lenguaje: PHP](https://img.shields.io/badge/Lenguaje-PHP-8A66E2)
- ![Promoción](https://img.shields.io/badge/Promoción-pendiente-ffaa00)
+ ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/LukaSaldivia/simuladores-api?style=for-the-badge)
+ ![Static Badge](https://img.shields.io/badge/PHP-8A66E2?style=for-the-badge&logo=php&logoColor=white)
+ ![Static Badge](https://img.shields.io/badge/pendiente-ffaa00?style=for-the-badge&label=Promoci%C3%B3n)
+ ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/LukaSaldivia/simuladores-api/main?style=for-the-badge)
+
+
 </div>
 
 ***
