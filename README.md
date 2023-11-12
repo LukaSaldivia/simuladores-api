@@ -160,8 +160,6 @@ Los endpoints disponibles son:
 | `page`     | Devuelve la página de resultados definida. Acepta números enteros positivos, en caso contrario (o si no se define), `page` valdrá 1 (5 elementos por página)                            |
 | `sort`     | Recibe como valor una propiedad para la búsqueda y delvolver los resultados ordenados de forma ascendente según la propiedad establecida                      |
 | `order`    | Recibe como valor "ASC" o "DESC" y varía el orden de forma ascendente o descendente de devolver los resultados según la propiedad `sort`                      |
-| `season`   | Recibe como valor la Id de una temporada y devuelve todos los capítulos de la temporada establecida (si season es menor a cero, devuelve todos los capítulos) |
-
 
 
 - GET `/cast/:ID`: Devuelve los datos del actor/actriz
