@@ -51,7 +51,7 @@ Desarrollado con el patrón de diseño MVC.
 Los endpoints disponibles son:
 
 ### /chapters
-- GET `/chapters`: Devuelve los capítulos de la serie en un arreglo:
+- GET `/chapters`: Devuelve los capítulos de la serie:
 ```json
 [
     {
