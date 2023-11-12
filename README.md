@@ -51,11 +51,39 @@ Desarrollado con el patrón de diseño MVC.
 Los endpoints disponibles son:
 
 ### /chapters
-- GET `/chapters`: Devuelve los capítulos de la serie
+- GET `/chapters`: Devuelve los capítulos de la serie en un arreglo:
+```json
+[
+    {
+        "idcap": "3Ru6sHh7IPw",
+        "nombrecap": "Los Disimuladores",
+        "descripcion": "Descripción del capítulo complementaria",
+        "temporada": 8,
+        "cast": [
+            {
+                "idcast": 4,
+                "nombrecast": "Lautaro",
+                "apellido": "Zjilstra"
+            },
+            {
+                "idcast": 6,
+                "nombrecast": "Federico",
+                "apellido": "D'Elía"
+            }
+        ]
+    },
+...
+]
+```
+
+| query-param | descripción                                                                                                                                                   |
+|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `page`     | Devuelve la página de resultados definida. Acepta números enteros positivos, en caso contrario (o si no se define), `page` valdrá 1 (5 elementos por página)                         |
+| `sort`     | Recibe como valor una propiedad para la búsqueda y delvolver los resultados ordenados de forma ascendente según la propiedad establecida                      |
+| `order`    | Recibe como valor "ASC" o "DESC" y varía el orden de forma ascendente o descendente de devolver los resultados según la propiedad `sort`                      |
+| `season`   | Recibe como valor la Id de una temporada y devuelve todos los capítulos de la temporada establecida (si season es menor a cero, devuelve todos los capítulos) |
+
 - GET `/chapters/:ID`: Devuelve un capítulo establecido por `:ID`
-- GET `/chapters?page=2`: Devuelve la página 2 (establecido por `page`) de los capítulos de la serie (5 capítulos por página)
-- GET `/chapters?sort=:PROPIEDAD&order=ASC|DESC`: Devuelve los capítulos ordenados según la propiedad establecida en `sort` y en orden ascendente o descendente según `order`
-- GET `/chapters?season=:ID_SEASON`: Devuelve los capítulos de la temporada (establecida por `ID_SEASON`) (Si `season` es 0, devuelve todos los capítulos)
 - DELETE `/chapters/:ID`: Elimina el capítulo según el `:ID` proporcionado
 - POST `/chapters`: Agrega un nuevo capítulo. <br>
 ```json
@@ -80,9 +108,25 @@ Los endpoints disponibles son:
 
 ### /seasons
 - GET `/seasons`: Devuelve los datos de las temporadas
+```json
+[
+    {
+        "idtemp": 8,
+        "nombretemp": "Extra"
+    },
+...
+]
+```
+
+ | query-param | descripción                                                                                                                                                   |
+|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `page`     | Devuelve la página de resultados definida. Acepta números enteros positivos, en caso contrario (o si no se define), `page` valdrá 1 (5 elementos por página)                          |
+| `sort`     | Recibe como valor una propiedad para la búsqueda y delvolver los resultados ordenados de forma ascendente según la propiedad establecida                      |
+| `order`    | Recibe como valor "ASC" o "DESC" y varía el orden de forma ascendente o descendente de devolver los resultados según la propiedad `sort`                      |
+
+
+
 - GET `/seasons/:ID`: Devuelve los datos de una temporada
-- GET `/seasons?page=2`: Devuelve la página 2 (establecido por `page`) de las temporada de la serie (5 temporadas por página)
-- GET `/seasons?sort=:PROPIEDAD&order=ASC|DESC`: Devuelve las temporadas ordenadas según la propiedad establecida en `sort` y en orden ascendente o descendente según `order`
 - DELETE `/seasons/:ID`: Elimina la temporada (y sus respectivos capítulos) según el `:ID` proporcionado
 - POST `/season`: Agrega una nueva temporada.
 ```json
@@ -100,9 +144,27 @@ Los endpoints disponibles son:
 
 ### /cast
 - GET `/cast`: Devuelve los datos del elenco de la serie
+```json
+[
+    {
+        "idcast": 1,
+        "nombrecast": "Luka",
+        "apellido": "Saldivia"
+    },
+...
+]
+```
+
+ | query-param | descripción                                                                                                                                                   |
+|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `page`     | Devuelve la página de resultados definida. Acepta números enteros positivos, en caso contrario (o si no se define), `page` valdrá 1 (5 elementos por página)                            |
+| `sort`     | Recibe como valor una propiedad para la búsqueda y delvolver los resultados ordenados de forma ascendente según la propiedad establecida                      |
+| `order`    | Recibe como valor "ASC" o "DESC" y varía el orden de forma ascendente o descendente de devolver los resultados según la propiedad `sort`                      |
+| `season`   | Recibe como valor la Id de una temporada y devuelve todos los capítulos de la temporada establecida (si season es menor a cero, devuelve todos los capítulos) |
+
+
+
 - GET `/cast/:ID`: Devuelve los datos del actor/actriz
-- GET `/cast?page=2`: Devuelve la página 2 (establecido por `page`) de los intérpretes de la serie (5 por página)
-- GET `/cast?sort=:PROPIEDAD&order=ASC|DESC`: Devuelve al cast ordenado según la propiedad establecida en `sort` y en orden ascendente o descendente según `order`
 - DELETE `/cast/:ID`: Elimina el actor/actriz según el `:ID` proporcionado
 - POST `/cast`: Agrega un nuevo/a actor/actriz al elenco.
 ```json
