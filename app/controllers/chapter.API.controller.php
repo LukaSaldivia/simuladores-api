@@ -19,7 +19,7 @@ class ChapterAPIController extends APIController{
       $season = isset($_GET['season']) && !empty($_GET['season']) ? $_GET['season'] : 0;
       $seasonQuery = '';
 
-      if ($season != 0) {
+      if ($season > 0) {
         $seasonQuery = 'WHERE temporada = '.$season;
       }
 
