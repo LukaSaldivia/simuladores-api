@@ -14,7 +14,7 @@ class ChapterAPIController extends APIController{
 
   function get($params = []) {
     if(empty($params)){
-      $page = isset($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1;
+      $page = isset($_GET['page']) && $_GET['page'] > 0 && is_int($_GET['page'])? $_GET['page'] : 1;
       $season = isset($_GET['season']) && !empty($_GET['season']) ? $_GET['season'] : 0;
       $seasonQuery = '';
 

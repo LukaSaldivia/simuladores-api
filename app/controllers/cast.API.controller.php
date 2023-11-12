@@ -15,7 +15,7 @@ class CastAPIController extends ApiController{
 
   function get($params = []) {
     if(empty($params)){
-      $page = isset($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1;
+      $page = isset($_GET['page']) && $_GET['page'] > 0 && is_int($_GET['page'])? $_GET['page'] : 1;
       $sort = isset($_GET['sort']) ? $_GET['sort'] : null;
       $order = isset($_GET['order']) ? $_GET['order'] : 'ASC';
 
