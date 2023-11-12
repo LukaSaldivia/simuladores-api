@@ -15,7 +15,8 @@ class SeasonAPIController extends ApiController{
 
   function get($params = []) {
     if(empty($params)){
-      $page = isset($_GET['page']) && $_GET['page'] > 0 && is_int($_GET['page'])? $_GET['page'] : 1;
+      $num = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+      $page = $num > 0? $num : 1;
       $sort = isset($_GET['sort']) ? $_GET['sort'] : null;
       $order = isset($_GET['order']) ? $_GET['order'] : 'ASC';
 
